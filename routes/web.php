@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//crea tutte le rotte per l autenticazione e gestione degli utenti
+Auth::routes();
+
+//crea una rotto per la home-page pubblica
+Route::get('/', 'HomeController@index')->name('home');
+
+//crea una rotta per la home-page amministrativa
+Route::get('/admin', 'Admin\HomeController@index')->name('admin.index');
