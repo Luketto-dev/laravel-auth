@@ -73,6 +73,8 @@
         </nav>
 
         <main class="py-4">
+            <h2 class="fs-3 fw-bold text-center">@yield('page_title')</h2>
+            <hr>
             @yield('content')
         </main>
     </div>

@@ -20,5 +20,15 @@ Auth::routes();
 //crea una rotto per la home-page pubblica
 Route::get('/', 'HomeController@index')->name('home');
 
-//crea una rotta per la home-page amministrativa
-Route::get('/admin', 'Admin\HomeController@index')->name('admin.index');
+Route::middleware("auth")
+->namespace("Admin") // indica la cartella dove si trovano i controller
+->name("admin.") // aggiunge prima del nome di ogni rotta questo prefisso
+->prefix("admin") // aggiunge prima di ogni URI questo prefisso
+->group(function(){
+
+    //crea una rotta per la home-page amministrativa
+    Route::get('/', 'HomeController@index')->name('index');
+
+    Route::resource("posts", "PostController");
+});
+

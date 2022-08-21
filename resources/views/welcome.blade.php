@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/admin') }}">Home</a>
+                        <a href="{{ url('/admin') }}">Admin</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -83,6 +83,14 @@
                 <div class="title m-b-md">
                     Laravel - parte pubblica
                 </div>
+
+                @auth
+                    <h2>Utente LOGGATO - {{Auth::user()->name}}</h2>
+                @endauth
+
+                @guest
+                    <h2>Utente non LOGGATO</h2>
+                @endguest
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
