@@ -22,9 +22,15 @@
                 <td>{{$post->slug}}</td>
                 <td>{{$post->content}}</td>
                 <td>
-                    <div class="d-flex gap-2">
+                    <div class="d-flex">
                         <a class="btn btn-info" href="{{ route('admin.posts.show', $post->slug) }}">Dettagli</a>
                         <a class="btn btn-warning" href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
+                        <form action="{{ route('admin.posts.destroy', ['post' => $post->slug]) }}"
+                            method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                        </form>
                         
                     </div>
                     
